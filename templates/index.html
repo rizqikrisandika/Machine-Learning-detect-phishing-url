@@ -1,0 +1,174 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}" type="text/css">
+  <title>Cek Website Phishing</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body style="background-image: url({{ url_for('static', filename='img/phishing.png') }}); ">
+
+  <div class="container">
+    <nav class="navbar navbar-inverse bg-transparent">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Deteksi Phishing</a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+  <center style="margin-top: 150px;">
+    <h1 class="text-white font-weight-bold">Input URL</h1>
+    <div class="single-url">
+      <div class="input-group input-group-lg" style="width: 800px;margin-top: 50px">
+        <input type="text" class="form-control" id="url" placeholder="http://abcde.xyz/" value="">
+          <button type="submit" class="btn getResult btn-danger btn-lg">Cek</button>
+        <div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="result"></div>
+
+  </center>
+
+
+
+</body>
+<script>
+  document.getElementsByClassName("getResult")[0].addEventListener("click", result);
+
+  function result() {
+
+    var div = document.querySelector(".result");
+    var urlname = document.getElementById('url').value;
+    $.ajax({
+        data: {
+          name: urlname
+        },
+        type: 'GET',
+        url: '/result'
+      }).always(div.innerHTML =
+        '<div class="loading-dots mt-4"><div class="loading-dots--dot"></div><div class="loading-dots--dot"></div><div class="loading-dots--dot"></div></div>'
+      )
+      .done(function (data) {
+
+        if (data.error) {
+          alert(data.error);
+        } else {
+
+          if(data=="Bukan Website Phishing"){
+            var newHTML = '<h3 class="text-white font-weight-bold mt-4">' + data + '</h3>';
+            div.innerHTML = newHTML;
+          }else{
+            var newHTML = '<h3 class="text-danger font-weight-bold mt-4">' + data + '</h3>';
+            div.innerHTML = newHTML;
+          }
+          
+        }
+
+      });
+
+
+  }
+</script>
+
+=======
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}" type="text/css">
+  <title>Cek Website Phishing</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body style="background-image: url({{ url_for('static', filename='img/phishing.png') }}); ">
+
+  <div class="container">
+    <nav class="navbar navbar-inverse bg-transparent">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Deteksi Phishing</a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a class="nav-link" href="#">About</a>
+        </li>
+      </ul>
+
+    </nav>
+  </div>
+
+  <center style="margin-top: 150px;">
+    <h1 class="text-white font-weight-bold">Input URL</h1>
+    <div class="single-url">
+      <div class="input-group input-group-lg" style="width: 800px;margin-top: 50px">
+        <input type="text" class="form-control" id="url" placeholder="http://abcde.xyz/" value="">
+          <button type="submit" class="btn getResult btn-danger btn-lg">Cek</button>
+        <div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="result"></div>
+
+  </center>
+
+
+
+</body>
+<script>
+  document.getElementsByClassName("getResult")[0].addEventListener("click", result);
+
+  function result() {
+
+    var div = document.querySelector(".result");
+    var urlname = document.getElementById('url').value;
+    $.ajax({
+        data: {
+          name: urlname
+        },
+        type: 'GET',
+        url: '/result'
+      }).always(div.innerHTML =
+        '<div class="loading-dots mt-4"><div class="loading-dots--dot"></div><div class="loading-dots--dot"></div><div class="loading-dots--dot"></div></div>'
+      )
+      .done(function (data) {
+
+        if (data.error) {
+          alert(data.error);
+        } else {
+
+          if(data=="Bukan Website Phishing"){
+            var newHTML = '<h3 class="text-white font-weight-bold mt-4">' + data + '</h3>';
+            div.innerHTML = newHTML;
+          }else{
+            var newHTML = '<h3 class="text-danger font-weight-bold mt-4">' + data + '</h3>';
+            div.innerHTML = newHTML;
+          }
+          
+        }
+
+      });
+
+
+  }
+</script>
+
+>>>>>>> add112012562178373980aeafff718f900fe4b31
+</html>
